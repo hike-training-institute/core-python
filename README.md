@@ -1,4 +1,4 @@
-# Core Python Syllabus by Hike Training Institute
+# Core Python Course Syllabus by Hike Training Institute
 
 ### Course Design:
 
