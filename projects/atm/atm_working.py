@@ -8,15 +8,17 @@ Completing this script shall give a Strong Understanding of Python Programming
 from openpyxl import load_workbook
 
 user_options  = {0 : 'exit',
-                1 : 'check_balance',
-                  2 : 'withdraw_amount',
-                  3 : 'deposit_amount'}
+                    1 : 'check_balance',
+                    2 : 'withdraw_amount',
+                    3 : 'deposit_amount'}
 
 
 def choose_option():
     """
-    :return: user input
+    displays all avaiable options to customer
+    :return: user's input choice
     """
+
     print("*******************************************************")
     print("         Choose Option from below                ")
     print("*******************************************************")
@@ -28,14 +30,21 @@ def choose_option():
 
 def load_excel(read_only = True):
     """
-    function to read excel sheet line by line
-    :return:
+    loads the excel sheet
+    :return: active sheet object
     """
     wb = load_workbook('bank_accounts.xlsx', read_only=read_only )
     sheet = wb.active
     return sheet
 
 def change_cell_value(cell_position, new_value):
+    """
+    changes a value in the excel sheet cell
+    :param cell_position: which cell needs to be changed
+    :param new_value: new value to be placed
+    :return: None
+    """
+
     wb = load_workbook('bank_accounts.xlsx')
     sheet = wb.active
     sheet[cell_position] = new_value
@@ -74,12 +83,22 @@ def validate_user():
             continue
 
 def check_balance(user_position):
+    """
+    To check the balace amount of the user from Excel sheet
+    :param user_position: row number of the user
+    :return: balance amount of the user
+    """
     bal_col = 'D'
     bal_position = bal_col + str(user_position)
     balance = load_excel()[bal_position].value
     return balance
 
 def withdraw_amount(user_position):
+    """
+    To Withdraw amount - reduces the balance amount based on user input
+    :param user_position: row number of the user
+    :return: None
+    """
     bal_col = 'D'
     user_withdraw_amount = int(input("Enter Amount to Withdraw :"))
     current_balance = check_balance(user_position)
@@ -95,6 +114,11 @@ def withdraw_amount(user_position):
 
 
 def deposit_amount(user_position):
+    """
+    To Deposit Money - Increase the current balance amount based on user deposited money
+    :param user_position: row number of the user
+    :return:
+    """
     bal_col = 'D'
     cell = bal_col + str(user_position)
     user_deposit_amount = int(input("Enter Amount to Deposit :"))
@@ -105,6 +129,11 @@ def deposit_amount(user_position):
 
 
 def atm_functionalities(user_position):
+    """
+    All Atm funcionalites are mapped based to user input choice
+    :param user_position:
+    :return: row number of the user
+    """
     option = choose_option()
 
     if option == 1 :
@@ -140,6 +169,10 @@ def retry():
 
 
 def atm_run():
+    """
+    Starting point ...
+    :return:
+    """
     print("Hi Welcome !!!")
     validation, user_position = validate_user()
     if validation :
