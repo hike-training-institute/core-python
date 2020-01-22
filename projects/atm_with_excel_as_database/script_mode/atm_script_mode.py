@@ -33,7 +33,7 @@ def load_excel(read_only = True):
     loads the excel sheet
     :return: active sheet object
     """
-    wb = load_workbook('bank_accounts.xlsx', read_only=read_only )
+    wb = load_workbook('../bank_accounts.xlsx', read_only=read_only)
     sheet = wb.active
     return sheet
 
@@ -45,7 +45,7 @@ def change_cell_value(cell_position, new_value):
     :return: None
     """
 
-    wb = load_workbook('bank_accounts.xlsx')
+    wb = load_workbook('../bank_accounts.xlsx')
     sheet = wb.active
     sheet[cell_position] = new_value
     wb.save('bank_accounts.xlsx')

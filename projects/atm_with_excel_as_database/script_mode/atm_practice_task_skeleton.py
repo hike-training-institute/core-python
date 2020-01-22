@@ -45,7 +45,7 @@ def change_cell_value(cell_position, new_value):
     :return: None
     """
 
-    wb = load_workbook('bank_accounts.xlsx')
+    wb = load_workbook('../bank_accounts.xlsx')
 
     # TODO :Change Cell value with new_value on cell_position
 
