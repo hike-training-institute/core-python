@@ -18,9 +18,9 @@
 
 ### 1. Introduction:
     
-    Overview
+    What is Python Programming Language ?
     History of Python 
-    Why Python is so popular today 
+    Why Python is so popular today ?
     Applications of Python
     Different career path after learning Python
 	
@@ -160,6 +160,10 @@
 	COMMIT & ROLLBACK operation
 	handling Errors 
 
+### Essentials Modules For Datascience:
+    Numpy
+    Pandas
+    Matplotlib
 
 # Final Projects:
     1. ATM Project using Excel Sheet as Database
