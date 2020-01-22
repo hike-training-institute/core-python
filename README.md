@@ -160,10 +160,16 @@
 	COMMIT & ROLLBACK operation
 	handling Errors 
 
-### Essentials Modules For Datascience:
+### 22. Essentials Modules For Datascience:
     Numpy
     Pandas
     Matplotlib
+
+### 23. GUI Programming :
+    What is GUI Programming?
+    Popular GUI Frameworks in Python
+    Building GUI using Tkinter 
+    Best Practices, Interview Questions, Practice Tasks
 
 # Final Projects:
     1. ATM Project using Excel Sheet as Database
