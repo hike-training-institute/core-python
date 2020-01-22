@@ -168,13 +168,15 @@
 ### 23. GUI Programming :
     What is GUI Programming?
     Popular GUI Frameworks in Python
+    Different Widgets in Tkinter
     Building GUI using Tkinter 
     Best Practices, Interview Questions, Practice Tasks
 
 # Final Projects:
     1. ATM Project using Excel Sheet as Database
-    2. Enterprise Employee life cycle Project using database
-    3. Festival Registration Project
+    2. Building an GUI for above ATM Project
+    3. Employee Leave Management Project using mysql database as backend
+    4. Festival Registration Project
 
 
 
