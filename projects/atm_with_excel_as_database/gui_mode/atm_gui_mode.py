@@ -1,5 +1,50 @@
-from tkinter import Tk, Frame, Entry, Button, Label, END
+from tkinter import Tk, Frame, Entry, Button, Label, END, PhotoImage
 from atm_gui_utils import validate_user, check_balance, deposit_amount, withdraw_amount
+from tkinter import font
+
+
+label_font = ('Helvetica', 18, 'bold')
+label_abg = 'red'
+label_bg = 'white'
+
+failed_label_configs = {
+                    'font' :label_font,
+                    }
+
+label_configs = {'font' :label_font,
+                 'background' : label_bg,
+                 'activebackground' :label_abg}
+
+button_configs = {
+                    'font' : label_font,
+                    'background' : label_bg,
+                    'activebackground' : label_abg,
+                    'borderwidth' : 5,
+                    'foreground' : 'green',
+                    }
+
+entry_configs = {
+                    'font' : label_font,
+                    'background' : label_bg,
+                    'borderwidth' : 4,
+                    'foreground' : 'green',
+                }
+
+
+gui_bg = 'Lightcyan2'
+welome_frame_bg = 'white'
+atm_func_frame_bg = 'purple1'
+
+
+welome_frame_configs  = {
+                    'background' : welome_frame_bg,
+                    'borderwidth' : 10,
+                    'padx' : 100,
+                    'pady' :100
+                }
+
+
+
 
 
 def get_entry(*enteries):
@@ -28,7 +73,8 @@ def login_action(welcome_frame, user_name_entry, user_password_entry):
         welcome_frame.pack_forget()
         show_atm_functionalities_frame(welcome_frame, input_username, user_position)
     else:
-        failed_validation_label = Label(welcome_frame, text="Provided username and password is Invalid !!!")
+        failed_validation_label = Label(welcome_frame, **failed_label_configs,
+                                        text="Provided username and password is Invalid !!!")
         failed_validation_label.grid(row=3, column=0)
 
 def cancel_login_action(welcome_frame, user_name_entry, user_password_entry):
@@ -54,16 +100,16 @@ def show_welcome_frame(gui):
     :return:
     """
 
-    welcome_frame = Frame(master=gui)
+    welcome_frame = Frame(master=gui, **welome_frame_configs)
 
     #Frame Elements:
-    user_name_label = Label(welcome_frame, text="Enter Your UserName :")
-    user_password_label = Label(welcome_frame, text="Enter Your Password :")
-    user_name_entry = Entry(welcome_frame)
-    user_password_entry = Entry(welcome_frame)
-    login_buttion = Button(welcome_frame, text="Login",
+    user_name_label = Label(welcome_frame, text="Enter Your UserName :", **label_configs)
+    user_password_label = Label(welcome_frame, text="Enter Your Password :", **label_configs)
+    user_name_entry = Entry(welcome_frame, **entry_configs)
+    user_password_entry = Entry(welcome_frame, **entry_configs)
+    login_buttion = Button(welcome_frame, text="Login", **button_configs,
                            command=lambda : login_action(welcome_frame, user_name_entry, user_password_entry))
-    cancel_button = Button(welcome_frame, text='Cancel',
+    cancel_button = Button(welcome_frame, text='Cancel', **button_configs,
                            command=lambda : cancel_login_action(welcome_frame, user_name_entry, user_password_entry))
 
     #Element Positions :
@@ -89,23 +135,23 @@ def show_atm_functionalities_frame(welcome_frame, username, user_position):
     user_balance = ""
 
     gui = welcome_frame.master
-    atm_func_frame = Frame(gui)
+    atm_func_frame = Frame(gui, **welome_frame_configs)
 
     #Frame Elements
-    welcome_user_label = Label(atm_func_frame, text=f"Hi {username} Welcome")
+    welcome_user_label = Label(atm_func_frame, text=f"Hi {username} Welcome", **label_configs)
 
 
-    balance_entry = Entry(atm_func_frame, text="current Balance...")
-    balance_label = Label(atm_func_frame, text = 'click to check Balance')
-    balance_button = Button(atm_func_frame, text='Check Balance',
+    balance_entry = Entry(atm_func_frame, text="current Balance...", **entry_configs)
+    balance_label = Label(atm_func_frame, text = 'click to check Balance', **label_configs)
+    balance_button = Button(atm_func_frame, text='Check Balance', **button_configs,
                             command=lambda: check_balance(user_position, balance_entry))
-    deposit_label = Label(atm_func_frame, text="Enter Deposit Amount")
-    deposit_entry = Entry(atm_func_frame)
-    deposit_button = Button(atm_func_frame, text='Deposit Amount',
+    deposit_label = Label(atm_func_frame, text="Enter Deposit Amount", **label_configs)
+    deposit_entry = Entry(atm_func_frame, **entry_configs)
+    deposit_button = Button(atm_func_frame, text='Deposit Amount', **button_configs,
                             command=lambda : deposit_amount(deposit_entry.get(), user_position))
-    withdraw_label = Label(atm_func_frame, text='Enter Withdraw Amount')
-    withdraw_entry = Entry(atm_func_frame)
-    withdraw_button = Button(atm_func_frame, text = 'Withdraw Amount',
+    withdraw_label = Label(atm_func_frame, text='Enter Withdraw Amount', **label_configs)
+    withdraw_entry = Entry(atm_func_frame, **entry_configs)
+    withdraw_button = Button(atm_func_frame, text = 'Withdraw Amount', **button_configs,
                              command=lambda : withdraw_amount(withdraw_entry.get(), user_position))
     #Element Position:
     welcome_user_label.grid(row=0, column=1)
@@ -135,6 +181,11 @@ def create_gui(gui):
 
 
 if __name__ == "__main__":
-    gui = Tk(baseName='Atm Machine Replica...')
+
+    gui = Tk(baseName='Atm Machine Replica...' )
+    bg_image = PhotoImage(file='/home/nandagopal/hti/core-python/projects/atm_with_excel_as_database/gui_mode/atm_image.png')
+    label_for_image = Label(gui, image=bg_image, **label_configs)
+    label_for_image.pack()
+    gui.configure(background=gui_bg)
     create_gui(gui)
     gui.mainloop()
