@@ -1,0 +1,65 @@
+
+
+
+Table tenant as T {
+id int [pk, increment]
+name varchar [not null, unique]
+owner varchar [ref: > PD.id]
+created_time timestamp [default: `now()`]
+modified_time timestamp [default: `now()`]
+delete_time timestam
+status boolean
+}
+
+
+Table PersonalDetails as PD{
+id int [pk, increment]
+tenant_id int [ref: > T.id]
+name varchar
+dob timestamp
+age int
+phone_number varchar
+address varchar
+role int [ref: > R.id]
+created_time timestamp [default: `now()`]
+modified_time timestamp [default: `now()`]
+delete_time timestam
+}
+
+Table Roles as R {
+id int [pk, increment]
+role varchar [not null, unique]
+}
+
+Table LendingDetaill as LD{
+id int [pk, increment]
+lending_amount float
+lending_date float
+interest_rate float
+interest_period varchar
+expected_return_date timestamp
+comments varchar
+}
+
+Table BorrowingDetaill as BD {
+id int [pk, increment]
+borrowed_amount float
+interest_rate float
+return_date timestamp
+interest_period varchar
+comments varchar
+}
+
+Table BorrowHistory as BH {
+id int [pk, increment]
+borrowed_from id [ref: > PD.id]
+borrwed_to id [ref: > PD.id]
+borrowing_detail id [ref: > BD.id]
+}
+
+Table LendingHistory as LH{
+id int [pk, increment]
+lended_by id [ref: > PD.id]
+lended_to id [ref: > PD.id]
+lended_detail id [ref: > LD.id]
+}
