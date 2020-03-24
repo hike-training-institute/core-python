@@ -1,0 +1,1 @@
+login_validate_query = "select * from credentials where username = '{}' and password = '{}'"
