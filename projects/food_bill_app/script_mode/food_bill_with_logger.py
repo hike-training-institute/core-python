@@ -24,15 +24,21 @@ def get_user_credentials():
 
     return user, pwd
 
-
 if __name__ == "__main__":
+    def first(count):
+        user, pwd= get_user_credentials()
+        valid_user, restaurant = validate_user(user, pwd)
 
-    user, pwd= get_user_credentials()
-    valid_user, restaurant = validate_user(user, pwd)
-
-    if valid_user:
-        f_log.info("User is valid...")
-        show_billing_options(restaurant)
-
-    else :
-        f_log.warning("User not found, Try again ...")
+        if valid_user:
+            f_log.info("User is valid...")
+            show_billing_options(restaurant)
+        else :
+            if count < 3:
+                f_log.warning("User not found, Try again ...")
+                count += 1
+                first(count)
+            else:
+                f_log.error("You have exceeded the maximum 3 number of attempts.....Exiting.......")
+                exit()
+    count = 1
+    first(count)
