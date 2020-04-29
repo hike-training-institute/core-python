@@ -1,5 +1,8 @@
+class Human:
+    eyes = 2
 
-class Employee :
+
+class Employee(Human) :
     total_employee = 0
     basic_salary = 2000
 

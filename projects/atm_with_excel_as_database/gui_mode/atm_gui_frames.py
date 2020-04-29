@@ -44,6 +44,7 @@ def cancel_login_action(welcome_frame, user_name_entry, user_password_entry):
     """
     for entry in [user_name_entry, user_password_entry]:
         entry.delete(0, END)
+    print(welcome_frame.winfo_children())
     welcome_frame.winfo_children()[-1].destroy()
 
 # ------------------------------------------------Actions---------------------------------------------------------
@@ -95,8 +96,6 @@ def show_atm_functionalities_frame(welcome_frame, username, user_position):
 
     #Frame Elements
     welcome_user_label = Label(atm_func_frame, text=f"Hi {username} Welcome", **label_configs)
-
-
     balance_entry = Entry(atm_func_frame, text="current Balance...", **entry_configs)
     balance_label = Label(atm_func_frame, text = 'click to check Balance', **label_configs)
     balance_button = Button(atm_func_frame, text='Check Balance', **button_configs,

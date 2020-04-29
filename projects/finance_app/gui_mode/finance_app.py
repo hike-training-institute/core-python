@@ -1,6 +1,7 @@
 from tkinter import Tk, Frame, Entry, Button, Label
 from utils.db_utils import cursor
 from utils.queries import login_validate_query
+import os
 
 def validate_user(username, password):
     db_result = cursor.execute(login_validate_query.format(username, password))

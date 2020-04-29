@@ -12,13 +12,13 @@ connection = pg.connect(user = "postgres",
 cursor = connection.cursor()
 
 # execute() is used to run sql query
-result = cursor.execute("select * from actor;")
-
+result = cursor.execute("select first_name from actor;")
 
 # fetchall() - to get all values in list
 all_rows = cursor.fetchall()
 
-print(type(all_rows))
+print(all_rows)
+# print(type(all_rows))
 
 for each_row in all_rows:
     print("---->", each_row)

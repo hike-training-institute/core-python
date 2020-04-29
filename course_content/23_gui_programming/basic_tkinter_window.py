@@ -23,13 +23,14 @@ if __name__ == '__main__':
     #positions
     welcome_label.grid(row=0)
     user_name_entry.grid(row=0, column=1)
-    login_button.grid(row=2)
+    login_button.grid(row=0, column=2)
 
 
     #Packing the elements
     welcome_frame.pack()
 
-    gui.minsize(500, 200)
+    gui.minsize(1000, 400)
+    gui.title("Basic Tkinter App")
     gui.mainloop()
 
 
