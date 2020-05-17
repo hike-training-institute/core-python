@@ -12,4 +12,4 @@ app.add_url_rule('/',  view_func=hello_world)
 app.add_url_rule('/hi', view_func=welcome_user)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=1900)
+    app.run(host='34.226.28.208', port=1900)
